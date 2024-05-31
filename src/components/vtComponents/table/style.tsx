@@ -12,6 +12,18 @@ export const Line = styled.div`
   flex-direction: row;
   color: #fff;
   width: 100%;
+
+  &:last-child {
+    margin-bottom: 2em;
+  }
+`;
+
+export const FixedLine = styled.div`
+  display: flex;
+  flex-direction: row;
+  color: #fff;
+  width: 100%;
+  background-color: #444;
 `;
 
 export const FixedItem = styled.div`
