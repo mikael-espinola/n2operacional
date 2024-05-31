@@ -1,6 +1,6 @@
 "use client";
 import React, { useEffect, useState } from "react";
-import { Columns, Container, FixedItem, Items, Line } from "./style";
+import { Columns, Container, FixedItem, FixedLine, Items, Line } from "./style";
 import ordens from "@/data/ordens";
 
 const Table = () => {
@@ -48,7 +48,7 @@ const Table = () => {
   return (
     <Container>
       <Columns>
-        <Line>
+        <FixedLine>
           <FixedItem>OPERADOR</FixedItem>
           <FixedItem>GT</FixedItem>
           <FixedItem>STATUS</FixedItem>
@@ -72,7 +72,7 @@ const Table = () => {
           <FixedItem>EDITOR 1</FixedItem>
           <FixedItem>OP</FixedItem>
           <FixedItem>RUIE</FixedItem>
-        </Line>
+        </FixedLine>
         {linhas}
       </Columns>
     </Container>
