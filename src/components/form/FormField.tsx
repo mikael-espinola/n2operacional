@@ -1,5 +1,5 @@
 "use client";
-import React, { FormEvent, useState } from "react";
+import React, { FormEvent, useEffect, useState } from "react";
 import { Attention, Button, Container, Form, LoginInput, Text } from "./style";
 import users from "../../data/users";
 import { useRouter } from "next/navigation";
@@ -12,17 +12,34 @@ const FormField = () => {
 
   const data = users;
 
+  useEffect(() => {
+    const isLogged = localStorage.getItem("logged");
+    const user = isLogged ? JSON.parse(isLogged) : "";
+    if (user === "") {
+      router.push("/");
+    } else {
+      router.push("/vt");
+    }
+  }, []);
+
   const handleLogin = (event: FormEvent) => {
     event.preventDefault();
-    console.log(userName, password);
     validateCredentials();
   };
 
   const validateCredentials = () => {
     const currentUser = data.find((user) => user.user === userName);
-    currentUser?.password === password
-      ? router.push("/vt")
-      : errorCredentials();
+    if (currentUser?.password === password) {
+      const user = {
+        id: `${currentUser?.id}`,
+        name: currentUser?.user,
+        logged: "true",
+      };
+      localStorage.setItem("logged", JSON.stringify(user));
+      router.push("/vt");
+      return;
+    }
+    errorCredentials();
   };
 
   const errorCredentials = () => {

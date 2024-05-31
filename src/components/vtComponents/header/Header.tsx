@@ -10,21 +10,9 @@ import {
   Section2,
   Text,
 } from "./style";
+import LogoffButton from "./logoffButton/LogoffButton";
 
 const Header = () => {
-  // const options = ['operador', 'status', 'cabo', 'cidade', 'assunto', 'bairro', 'uf']
-  const options = [
-    {
-      id: 1,
-      category: "operador",
-      categoryOptions: ["livre", "mikael.espinola"],
-    },
-    {
-      id: 2,
-      category: "status",
-      categoryOptions: ["ligando", "em tratativa"],
-    },
-  ];
   return (
     <Container>
       <Section1>
@@ -33,7 +21,7 @@ const Header = () => {
           <ActionText>Produtividade</ActionText>
         </ActionButton>
         <SearchInput type="text" placeholder="Pesquise" />
-        <ActionButton href="/">Logoff</ActionButton>
+        <LogoffButton />
       </Section1>
       <Section2>
         <Filter value="status">
