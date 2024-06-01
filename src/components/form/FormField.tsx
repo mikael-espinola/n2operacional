@@ -13,14 +13,7 @@ const FormField = () => {
   const data = users;
 
   useEffect(() => {
-    const isLogged = localStorage.getItem("logged");
-    const user = isLogged === null ? "" : JSON.parse(isLogged);
-    if (user === "") {
-      router.push("/");
-    } else {
-      router.push("/vt");
-      localStorage.setItem("logged", JSON.stringify(user));
-    }
+    console.log("carregamento correto");
   }, []);
 
   const handleLogin = (event: FormEvent) => {
