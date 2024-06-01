@@ -6,7 +6,7 @@ export const Button = styled(Link)`
   border-radius: 5px;
   height: max-content;
   text-decoration: none;
-  padding: 0.2em;
+  padding: 0 0.2em;
   cursor: pointer;
   transition: background-color 0.3s;
   &:hover {
