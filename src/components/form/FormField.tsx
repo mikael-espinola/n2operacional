@@ -20,7 +20,6 @@ const FormField = () => {
         router.push("/");
       } else {
         router.push("/vt");
-        localStorage.setItem("logged", JSON.stringify(user));
       }
     }
   }, []);
