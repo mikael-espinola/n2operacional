@@ -14,7 +14,6 @@ const FormField = () => {
 
   useEffect(() => {
     const isLogged = localStorage.getItem("logged");
-    console.log(isLogged);
     const user = isLogged === null ? "" : JSON.parse(isLogged);
     if (user === "") {
       router.push("/");
