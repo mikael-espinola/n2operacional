@@ -1,5 +1,5 @@
 "use client";
-import React, { FormEvent, useEffect, useState } from "react";
+import React, { FormEvent, useState } from "react";
 import { Attention, Button, Container, Form, LoginInput, Text } from "./style";
 import users from "../../data/users";
 import { useRouter } from "next/navigation";
@@ -8,20 +8,9 @@ const FormField = () => {
   const [userName, setUserName] = useState<string>();
   const [password, setPassword] = useState<string>();
   const [isUserCorrent, setIsUserCorrent] = useState(false);
-  // const [user, setUser] = useState<any>();
   const router = useRouter();
 
   const data = users;
-
-  if (typeof window !== "undefined") {
-    const isLogged = localStorage.getItem("logged");
-    const user = isLogged ? JSON.parse(isLogged) : "";
-    if (user === "") {
-      router.push("/");
-    } else {
-      router.push("/vt");
-    }
-  }
 
   const handleLogin = (event: FormEvent) => {
     event.preventDefault();
