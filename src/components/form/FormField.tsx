@@ -12,15 +12,14 @@ const FormField = () => {
 
   const data = users;
 
+  const isLogged = localStorage.getItem("logged");
+  const user = isLogged ? JSON.parse(isLogged) : "";
+
   useEffect(() => {
-    if (typeof window !== "undefined") {
-      const isLogged = localStorage.getItem("logged");
-      const user = isLogged === null ? "" : JSON.parse(isLogged);
-      if (user === "") {
-        router.push("/");
-      } else {
-        router.push("/vt");
-      }
+    if (user === "") {
+      router.push("/");
+    } else {
+      router.push("/vt");
     }
   }, []);
 
