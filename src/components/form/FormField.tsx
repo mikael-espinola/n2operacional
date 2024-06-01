@@ -12,6 +12,18 @@ const FormField = () => {
 
   const data = users;
 
+  useEffect(() => {
+    const isLogged = localStorage.getItem("logged");
+    console.log(isLogged);
+    const user = isLogged === null ? "" : JSON.parse(isLogged);
+    if (user === "") {
+      router.push("/");
+    } else {
+      router.push("/vt");
+      localStorage.setItem("logged", JSON.stringify(user));
+    }
+  }, []);
+
   const handleLogin = (event: FormEvent) => {
     event.preventDefault();
     validateCredentials();
