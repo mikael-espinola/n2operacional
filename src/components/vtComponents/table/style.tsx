@@ -4,7 +4,7 @@ export const Container = styled.div`
   display: flex;
   flex-direction: column;
   width: 100vw;
-  max-height: 32em;
+  height: 78vh;
 `;
 export const Columns = styled.div``;
 export const Line = styled.div`
@@ -27,7 +27,7 @@ export const FixedLine = styled.div`
 `;
 
 export const FixedItem = styled.div`
-  font-size: 12px;
+  font-size: 10px;
   min-width: 10em;
   text-align: center;
   padding: 0.2em;
@@ -35,7 +35,7 @@ export const FixedItem = styled.div`
 `;
 
 export const Items = styled.div`
-  font-size: 12px;
+  font-size: 10px;
   min-width: 10em;
   padding: 0.2em;
   border: 1px solid #b1aeae;
