@@ -11,6 +11,9 @@ export const GlobalStyle = createGlobalStyle`
         background: rgb(67,34,195);
         background: linear-gradient(350deg, rgba(67,34,195,1) 0%, rgba(44,6,89,1) 66%);
         background-repeat: no-repeat;
-        height: 100vh;
+        min-height: 100vh;
+    }
+    ul {
+        list-style-type: none;
     }
 `;

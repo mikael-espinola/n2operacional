@@ -8,7 +8,6 @@ export const Container = styled.div`
 `;
 export const Section = styled.div`
   margin: 0.5em;
-  height: 100%;
   overflow: auto;
   background-color: #444;
 `;

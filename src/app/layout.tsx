@@ -3,6 +3,7 @@ import { Poppins } from "next/font/google";
 
 import StyledJsxRegistry from "../lib/regsitry";
 import { GlobalStyle } from "./globalStyle";
+import Footer from "@/components/footer/Footer";
 
 const poppins = Poppins({ subsets: ["latin"], weight: "400" });
 
@@ -21,6 +22,7 @@ export default function RootLayout({
       <body className={poppins.className}>
         <StyledJsxRegistry>
           {children}
+          <Footer />
           <GlobalStyle />
         </StyledJsxRegistry>
       </body>

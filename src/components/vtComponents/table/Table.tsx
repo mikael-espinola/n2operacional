@@ -48,7 +48,7 @@ const Table = () => {
   return (
     <Container>
       <Columns>
-        <FixedLine>
+        <Line>
           <FixedItem>OPERADOR</FixedItem>
           <FixedItem>GT</FixedItem>
           <FixedItem>STATUS</FixedItem>
@@ -72,7 +72,7 @@ const Table = () => {
           <FixedItem>EDITOR 1</FixedItem>
           <FixedItem>OP</FixedItem>
           <FixedItem>RUIE</FixedItem>
-        </FixedLine>
+        </Line>
         {linhas}
       </Columns>
     </Container>
