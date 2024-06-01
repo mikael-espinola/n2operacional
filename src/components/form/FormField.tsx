@@ -8,20 +8,20 @@ const FormField = () => {
   const [userName, setUserName] = useState<string>();
   const [password, setPassword] = useState<string>();
   const [isUserCorrent, setIsUserCorrent] = useState(false);
+  // const [user, setUser] = useState<any>();
   const router = useRouter();
 
   const data = users;
 
-  const isLogged = localStorage.getItem("logged");
-  const user = isLogged ? JSON.parse(isLogged) : "";
-
-  useEffect(() => {
+  if (typeof window !== "undefined") {
+    const isLogged = localStorage.getItem("logged");
+    const user = isLogged ? JSON.parse(isLogged) : "";
     if (user === "") {
       router.push("/");
     } else {
       router.push("/vt");
     }
-  }, []);
+  }
 
   const handleLogin = (event: FormEvent) => {
     event.preventDefault();
