@@ -9,7 +9,7 @@ const page = () => {
   useEffect(() => {
     const cookies = parseCookies();
     if (cookies.isLogged) {
-      router.push("/vt");
+      router.push("/produtividade");
     } else {
       router.push("/");
     }
