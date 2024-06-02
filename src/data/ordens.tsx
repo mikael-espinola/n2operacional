@@ -1,6 +1,8 @@
+import { v4 as uuidv4 } from "uuid";
+
 const ordens = [
   {
-    id: 0,
+    id: uuidv4(),
     gt: "12587445",
     operador: "livre",
     status: "none",
@@ -27,7 +29,7 @@ const ordens = [
     RUIE: "mnop123",
   },
   {
-    id: 1,
+    id: uuidv4(),
     gt: "12587445",
     operador: "livre",
     status: "none",
@@ -54,7 +56,7 @@ const ordens = [
     RUIE: "mnop123",
   },
   {
-    id: 2,
+    id: uuidv4(),
     gt: "12587445",
     operador: "livre",
     status: "none",
@@ -81,7 +83,7 @@ const ordens = [
     RUIE: "mnop123",
   },
   {
-    id: 3,
+    id: uuidv4(),
     gt: "12587445",
     operador: "livre",
     status: "none",
@@ -108,7 +110,7 @@ const ordens = [
     RUIE: "mnop123",
   },
   {
-    id: 4,
+    id: uuidv4(),
     gt: "12587445",
     operador: "livre",
     status: "none",
@@ -135,7 +137,7 @@ const ordens = [
     RUIE: "mnop123",
   },
   {
-    id: 5,
+    id: uuidv4(),
     gt: "12587445",
     operador: "livre",
     status: "none",
@@ -162,7 +164,7 @@ const ordens = [
     RUIE: "mnop123",
   },
   {
-    id: 0,
+    id: uuidv4(),
     gt: "12587445",
     operador: "livre",
     status: "none",
@@ -189,7 +191,7 @@ const ordens = [
     RUIE: "mnop123",
   },
   {
-    id: 1,
+    id: uuidv4(),
     gt: "12587445",
     operador: "livre",
     status: "none",
@@ -216,7 +218,7 @@ const ordens = [
     RUIE: "mnop123",
   },
   {
-    id: 2,
+    id: uuidv4(),
     gt: "12587445",
     operador: "livre",
     status: "none",
@@ -243,7 +245,7 @@ const ordens = [
     RUIE: "mnop123",
   },
   {
-    id: 3,
+    id: uuidv4(),
     gt: "12587445",
     operador: "livre",
     status: "none",
@@ -270,7 +272,7 @@ const ordens = [
     RUIE: "mnop123",
   },
   {
-    id: 4,
+    id: uuidv4(),
     gt: "12587445",
     operador: "livre",
     status: "none",
@@ -297,7 +299,7 @@ const ordens = [
     RUIE: "mnop123",
   },
   {
-    id: 5,
+    id: uuidv4(),
     gt: "12587445",
     operador: "livre",
     status: "none",
@@ -324,7 +326,7 @@ const ordens = [
     RUIE: "mnop123",
   },
   {
-    id: 0,
+    id: uuidv4(),
     gt: "12587445",
     operador: "livre",
     status: "none",
@@ -351,7 +353,7 @@ const ordens = [
     RUIE: "mnop123",
   },
   {
-    id: 1,
+    id: uuidv4(),
     gt: "12587445",
     operador: "livre",
     status: "none",
@@ -378,7 +380,7 @@ const ordens = [
     RUIE: "mnop123",
   },
   {
-    id: 2,
+    id: uuidv4(),
     gt: "12587445",
     operador: "livre",
     status: "none",
@@ -405,7 +407,7 @@ const ordens = [
     RUIE: "mnop123",
   },
   {
-    id: 3,
+    id: uuidv4(),
     gt: "12587445",
     operador: "livre",
     status: "none",
@@ -432,7 +434,7 @@ const ordens = [
     RUIE: "mnop123",
   },
   {
-    id: 4,
+    id: uuidv4(),
     gt: "12587445",
     operador: "livre",
     status: "none",
@@ -459,7 +461,7 @@ const ordens = [
     RUIE: "mnop123",
   },
   {
-    id: 5,
+    id: uuidv4(),
     gt: "12587445",
     operador: "livre",
     status: "none",
@@ -486,7 +488,7 @@ const ordens = [
     RUIE: "mnop123",
   },
   {
-    id: 0,
+    id: uuidv4(),
     gt: "12587445",
     operador: "livre",
     status: "none",
@@ -513,7 +515,7 @@ const ordens = [
     RUIE: "mnop123",
   },
   {
-    id: 1,
+    id: uuidv4(),
     gt: "12587445",
     operador: "livre",
     status: "none",
@@ -540,7 +542,7 @@ const ordens = [
     RUIE: "mnop123",
   },
   {
-    id: 2,
+    id: uuidv4(),
     gt: "12587445",
     operador: "livre",
     status: "none",
@@ -567,7 +569,7 @@ const ordens = [
     RUIE: "mnop123",
   },
   {
-    id: 3,
+    id: uuidv4(),
     gt: "12587445",
     operador: "livre",
     status: "none",
@@ -594,7 +596,7 @@ const ordens = [
     RUIE: "mnop123",
   },
   {
-    id: 4,
+    id: uuidv4(),
     gt: "12587445",
     operador: "livre",
     status: "none",
@@ -621,7 +623,7 @@ const ordens = [
     RUIE: "mnop123",
   },
   {
-    id: 5,
+    id: uuidv4(),
     gt: "12587445",
     operador: "livre",
     status: "none",
@@ -648,7 +650,7 @@ const ordens = [
     RUIE: "mnop123",
   },
   {
-    id: 0,
+    id: uuidv4(),
     gt: "12587445",
     operador: "livre",
     status: "none",
@@ -675,7 +677,7 @@ const ordens = [
     RUIE: "mnop123",
   },
   {
-    id: 1,
+    id: uuidv4(),
     gt: "12587445",
     operador: "livre",
     status: "none",
@@ -702,7 +704,7 @@ const ordens = [
     RUIE: "mnop123",
   },
   {
-    id: 2,
+    id: uuidv4(),
     gt: "12587445",
     operador: "livre",
     status: "none",
@@ -729,7 +731,7 @@ const ordens = [
     RUIE: "mnop123",
   },
   {
-    id: 3,
+    id: uuidv4(),
     gt: "12587445",
     operador: "livre",
     status: "none",
@@ -756,7 +758,7 @@ const ordens = [
     RUIE: "mnop123",
   },
   {
-    id: 4,
+    id: uuidv4(),
     gt: "12587445",
     operador: "livre",
     status: "none",
@@ -783,7 +785,7 @@ const ordens = [
     RUIE: "mnop123",
   },
   {
-    id: 5,
+    id: uuidv4(),
     gt: "12587445",
     operador: "livre",
     status: "none",

@@ -1,12 +1,12 @@
 "use client";
 import React, { useEffect, useState } from "react";
-import { Columns, Container, FixedItem, FixedLine, Items, Line } from "./style";
+import { Columns, Container, FixedItem, Items, Line } from "./style";
 import ordens from "@/data/ordens";
 
 const Table = () => {
   const [linhas, setLinhas] = useState<any[]>([]);
 
-  const handleClick = (value: number) => {
+  const handleClick = (value: string) => {
     console.log(value);
   };
 

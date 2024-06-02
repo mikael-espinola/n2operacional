@@ -18,6 +18,9 @@ export const Text = styled.h1`
 
 export const Attention = styled.span`
   padding-bottom: 0.5em;
+  background-color: #ff000077;
+  border-radius: 5px;
+  padding: 0.4em;
 `;
 
 export const Form = styled.form`
