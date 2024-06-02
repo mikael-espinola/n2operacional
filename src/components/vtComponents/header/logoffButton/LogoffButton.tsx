@@ -2,19 +2,10 @@
 
 import React from "react";
 import { Button } from "./style";
-import { destroyCookie } from "nookies";
+import { signOut } from "next-auth/react";
 
 const LogoffButton = () => {
-  const handleLogoff = () => {
-    destroyCookie(null, "isLogged", {
-      path: "/",
-    });
-  };
-  return (
-    <Button onClick={handleLogoff} href="/">
-      Logoff
-    </Button>
-  );
+  return <Button onClick={() => signOut()}>Logoff</Button>;
 };
 
 export default LogoffButton;

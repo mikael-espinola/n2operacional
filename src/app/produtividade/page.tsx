@@ -1,26 +1,20 @@
-"use client";
-import Link from "next/link";
-import { useRouter } from "next/navigation";
-import { parseCookies } from "nookies";
-import React, { useEffect } from "react";
+import { getServerSession } from "next-auth";
+import { redirect } from "next/navigation";
+import React from "react";
+import ReturnButton from "./returnButton/ReturnButton";
 
-const page = () => {
-  const router = useRouter();
-  useEffect(() => {
-    const cookies = parseCookies();
-    if (cookies.isLogged) {
-      router.push("/vt");
-    } else {
-      router.push("/");
-    }
-  }, []);
+const page = async () => {
+  const session = await getServerSession();
+
+  if (!session) {
+    redirect("/");
+  }
 
   return (
     <div>
       <h1>Produtividade Pessoal</h1>
-      <button>
-        <Link href="/vt">Return</Link>
-      </button>
+      <h4>Hello, {session?.user?.name}</h4>
+      <ReturnButton />
     </div>
   );
 };
