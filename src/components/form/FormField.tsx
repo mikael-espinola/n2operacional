@@ -3,6 +3,7 @@ import React, { FormEvent, useState } from "react";
 import { Attention, Button, Container, Form, LoginInput, Text } from "./style";
 import users from "../../data/users";
 import { useRouter } from "next/navigation";
+import { setCookie } from "nookies";
 
 const FormField = () => {
   const [userName, setUserName] = useState<string>();
@@ -14,6 +15,10 @@ const FormField = () => {
 
   const handleLogin = (event: FormEvent) => {
     event.preventDefault();
+    if (userName === undefined || password === undefined) {
+      errorCredentials();
+      return;
+    }
     validateCredentials();
   };
 
@@ -25,7 +30,12 @@ const FormField = () => {
         name: currentUser?.user,
         logged: "true",
       };
-      localStorage.setItem("logged", JSON.stringify(user));
+
+      setCookie(null, "isLogged", `${currentUser?.user}`, {
+        maxAge: 2000,
+        path: "/",
+      });
+
       router.push("/vt");
       return;
     }
@@ -36,7 +46,7 @@ const FormField = () => {
     setIsUserCorrent(true);
     setTimeout(() => {
       setIsUserCorrent(false);
-    }, 3000);
+    }, 2100);
   };
   return (
     <Container>

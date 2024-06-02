@@ -1,7 +1,20 @@
+"use client";
 import Link from "next/link";
-import React from "react";
+import { useRouter } from "next/navigation";
+import { parseCookies } from "nookies";
+import React, { useEffect } from "react";
 
 const page = () => {
+  const router = useRouter();
+  useEffect(() => {
+    const cookies = parseCookies();
+    if (cookies.isLogged) {
+      router.push("/vt");
+    } else {
+      router.push("/");
+    }
+  }, []);
+
   return (
     <div>
       <h1>Produtividade Pessoal</h1>
