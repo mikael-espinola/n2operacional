@@ -1,21 +1,16 @@
-"use client";
 import React, { useEffect } from "react";
 import { Container, Section } from "./style";
 import Header from "@/components/vtComponents/header/Header";
 import Table from "@/components/vtComponents/table/Table";
-import { parseCookies } from "nookies";
-import { useRouter } from "next/navigation";
+import { getServerSession } from "next-auth";
+import { redirect } from "next/navigation";
 
-const page = () => {
-  const router = useRouter();
-  useEffect(() => {
-    const cookies = parseCookies();
-    if (cookies.isLogged) {
-      router.push("/vt");
-    } else {
-      router.push("/");
-    }
-  }, []);
+const page = async () => {
+  const session = await getServerSession();
+
+  if (!session) {
+    redirect("/");
+  }
   return (
     <Container>
       <Header />

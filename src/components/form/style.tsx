@@ -41,9 +41,9 @@ export const Button = styled.button`
   padding: 1em;
   border-radius: 0.5em;
 `;
-/*
-    
-export const Form = styled.form``
-
-
-*/
+export const Loader = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 1em;
+`;

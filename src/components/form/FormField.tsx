@@ -1,53 +1,50 @@
 "use client";
-import React, { FormEvent, useState } from "react";
-import { Attention, Button, Container, Form, LoginInput, Text } from "./style";
-import users from "../../data/users";
-import { useRouter } from "next/navigation";
-import { setCookie } from "nookies";
+import React, { FormEvent, useEffect, useState } from "react";
+import {
+  Attention,
+  Button,
+  Container,
+  Form,
+  Loader,
+  LoginInput,
+  Text,
+} from "./style";
+import { signIn } from "next-auth/react";
+import { useSearchParams } from "next/navigation";
+import { PropagateLoader } from "react-spinners";
 
 const FormField = () => {
-  const [userName, setUserName] = useState<string>();
-  const [password, setPassword] = useState<string>();
   const [isUserCorrent, setIsUserCorrent] = useState(false);
-  const router = useRouter();
+  const [isLoading, setIsLoading] = useState(false);
+  const searchParams = useSearchParams();
 
-  const data = users;
-
-  const handleLogin = (event: FormEvent) => {
+  const error = searchParams.get("error");
+  const handleLogin = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    if (userName === undefined || password === undefined) {
-      errorCredentials();
-      return;
+
+    setIsLoading(true);
+    const formData = new FormData(event.currentTarget);
+    const data = {
+      user: formData.get("user"),
+      password: formData.get("password"),
+    };
+
+    signIn("credentials", {
+      ...data,
+      callbackUrl: "/vt",
+    });
+  };
+
+  useEffect(() => {
+    if (error === "CredentialsSignin") {
+      setIsLoading(false);
+      setIsUserCorrent(true);
+      setTimeout(() => {
+        setIsUserCorrent(false);
+      }, 2100);
     }
-    validateCredentials();
-  };
+  }, [error]);
 
-  const validateCredentials = () => {
-    const currentUser = data.find((user) => user.user === userName);
-    if (currentUser?.password === password) {
-      const user = {
-        id: `${currentUser?.id}`,
-        name: currentUser?.user,
-        logged: "true",
-      };
-
-      setCookie(null, "isLogged", `${currentUser?.user}`, {
-        maxAge: 2000,
-        path: "/",
-      });
-
-      router.push("/vt");
-      return;
-    }
-    errorCredentials();
-  };
-
-  const errorCredentials = () => {
-    setIsUserCorrent(true);
-    setTimeout(() => {
-      setIsUserCorrent(false);
-    }, 2100);
-  };
   return (
     <Container>
       <Text>N2 OPERACIONAL</Text>
@@ -55,17 +52,24 @@ const FormField = () => {
         <Attention>Credentials error. Check and try again.</Attention>
       )}
       <Form onSubmit={handleLogin}>
+        <LoginInput placeholder="user" type="text" name="user" />
         <LoginInput
-          onChange={(event) => setUserName(event.target.value)}
-          placeholder="user"
-          type="text"
-        />
-        <LoginInput
-          onChange={(event) => setPassword(event.target.value)}
           placeholder="******************"
+          name="password"
           type="password"
         />
-        <Button onSubmit={handleLogin}>Sign In</Button>
+        <Button type="submit">
+          {isLoading ? (
+            <Loader>
+              <PropagateLoader
+                style={{ display: "flex", alignItems: "center" }}
+                color="#444"
+              />
+            </Loader>
+          ) : (
+            "Sign In"
+          )}
+        </Button>
       </Form>
     </Container>
   );
