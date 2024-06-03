@@ -3,17 +3,55 @@ import React, { useEffect, useState } from "react";
 import { Columns, Container, FixedItem, Items, Line } from "./style";
 import ordens from "@/data/ordens";
 
-const Table = () => {
+type Ordem = {
+  id: string;
+  gt: string;
+  operador: string;
+  status: string;
+  H_RETORNO: string;
+  DATA_ABERTURA: string;
+  EMPRESA: string;
+  CIDADE: string;
+  TME: string;
+  ASSUNTO: string;
+  SERVICO: string;
+  BAIRRO: string;
+  CAMINHO: string;
+  TEC: string;
+  HISTÓRICO: string;
+  RESOLUCAO_N2: string;
+  RUA: string;
+  UF: string;
+  RE: string;
+  H_FINALIZADA: string;
+  FINALIZACAO: string;
+  EDITOR_1: string;
+  OP: string;
+  RUIE: string;
+};
+interface Props {
+  user?: boolean;
+  userOrdens?: Ordem[];
+}
+
+const Table = ({ user, userOrdens }: Props) => {
   const [linhas, setLinhas] = useState<any[]>([]);
+  const [ordensList, setOrdensList] = useState(ordens);
+
+  useEffect(() => {
+    if (user) {
+      userOrdens && setOrdensList(userOrdens);
+    }
+  }, [user]);
 
   const handleClick = (value: string) => {
-    console.log(value);
+    return;
   };
 
   useEffect(() => {
     const arrL: any[] = [];
 
-    ordens.map((ordem) => {
+    ordensList.map((ordem) => {
       arrL.push(
         <Line key={ordem.id} onClick={() => handleClick(ordem.id)}>
           <Items>{ordem.operador}</Items>
@@ -25,7 +63,7 @@ const Table = () => {
           <Items>{ordem.CIDADE}</Items>
           <Items>{ordem.TME}</Items>
           <Items>{ordem.ASSUNTO}</Items>
-          <Items>{ordem.SERVIÇO}</Items>
+          <Items>{ordem.SERVICO}</Items>
           <Items>{ordem.BAIRRO}</Items>
           <Items>{ordem.CAMINHO}</Items>
           <Items>{ordem.TEC}</Items>
@@ -43,7 +81,7 @@ const Table = () => {
       );
     });
     setLinhas(arrL);
-  }, [ordens]);
+  }, [ordensList]);
 
   return (
     <Container>

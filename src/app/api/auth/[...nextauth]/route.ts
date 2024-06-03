@@ -1,5 +1,7 @@
+import users from "@/data/users";
 import nextAuth from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
+
 
 
 const handler = nextAuth({
@@ -17,16 +19,18 @@ const handler = nextAuth({
             if(!credentials) {
                 return null
             }
-            if(credentials.user === "mikael.espinola" && credentials.password === "123"){
+            const currentUser = users.find((user) => user.user === credentials.user && user.password === credentials.password)
+            if(currentUser){
                 return {
-                    id: "1",
-                    name: "Mikael Espínola"
+                    id: `${currentUser.id}`,
+                    name: `${currentUser.name}`,
+                    email: `${currentUser.user}`
                 }
             }
             return null
           }
         })
-      ]
+      ],
 })
 
 export { handler as GET, handler as POST}
