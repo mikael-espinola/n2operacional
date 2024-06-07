@@ -8,15 +8,14 @@ A showcase to show up improvements to N2 plataform.
 
 Users should be able to:
 
-- Log in in the plataform
-- Logout
+- Login and Logout with auth.
 - Better view of tickets list
 - Better performance to loading
 - Friendly interface
 
 ### Links
 
-- Live Site URL: [Add live site URL here](https://mikel-espinola.github.io/n2operacional)
+- Live Site URL: [Add live site URL here](https://n2operacional.vercel.app)
 
 ## My process
 
@@ -27,6 +26,7 @@ Users should be able to:
 - CSS Grid
 - [React](https://reactjs.org/) - JS library
 - [Next.js](https://nextjs.org/) - React framework
+- Nookies - Cookies management lib
 - [Styled Components](https://styled-components.com/) - For styles
 
 ## Author

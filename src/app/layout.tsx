@@ -4,12 +4,12 @@ import { Poppins } from "next/font/google";
 import StyledJsxRegistry from "../lib/regsitry";
 import { GlobalStyle } from "./globalStyle";
 import Footer from "@/components/footer/Footer";
+import UserProvider from "@/context/UserProvider";
 
 const poppins = Poppins({ subsets: ["latin"], weight: "400" });
 
 export const metadata: Metadata = {
   title: "N2 operacional - BO",
-  description: "Backoffice system",
 };
 
 export default function RootLayout({
@@ -18,12 +18,14 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="pt-br">
       <body className={poppins.className}>
         <StyledJsxRegistry>
-          {children}
-          <Footer />
-          <GlobalStyle />
+          <UserProvider>
+            {children}
+            <Footer />
+            <GlobalStyle />
+          </UserProvider>
         </StyledJsxRegistry>
       </body>
     </html>

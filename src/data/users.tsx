@@ -1,4 +1,42 @@
-const users = [
+export interface VTItem {
+  id: string;
+  CONTRATO: string;
+  gt: string;
+  operador: string;
+  status: string;
+  H_RETORNO: string;
+  DATA_ABERTURA: string;
+  EMPRESA: string;
+  CIDADE: string;
+  TME: string;
+  ASSUNTO: string;
+  SERVICO: string;
+  BAIRRO: string;
+  CAMINHO: string;
+  TEC: string;
+  HISTÓRICO: string;
+  RESOLUCAO_N2: string;
+  RUA: string;
+  UF: string;
+  RE: string;
+  H_FINALIZADA: string;
+  FINALIZACAO: string;
+  EDITOR_1: string;
+  OP: string;
+  RUIE: string;
+  ORDEM: string;
+}
+
+export interface User {
+  id: number;
+  user: string;
+  name: string;
+  password: string;
+  access: string;
+  vtList: VTItem[];
+}
+
+const users: User[] = [
   {
     id: 0,
     user: "mikael.espinola",
@@ -8,13 +46,14 @@ const users = [
     vtList: [
       {
         id: "uuidv4()",
-        gt: "12587445",
+        CONTRATO: "151512151",
+        gt: "22334455",
         operador: "mikael.espinola",
         status: "none",
-        EMPRESA: "MULTIPLAY",
         H_RETORNO: "abcd123",
-        DATA_ABERTURA: "2023-08-21",
-        CIDADE: "efgh456",
+        DATA_ABERTURA: "2023-06-14",
+        EMPRESA: "cabo",
+        CIDADE: "são gonçalo do amarante",
         TME: "ijkl789",
         ASSUNTO: "mnop012",
         SERVICO: "qrst345",
@@ -31,6 +70,7 @@ const users = [
         EDITOR_1: "efgh567",
         OP: "ijkl890",
         RUIE: "mnop123",
+        ORDEM: "11122233",
       },
     ],
   },

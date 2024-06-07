@@ -1,7 +1,7 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { Container, Section } from "./style";
 import Header from "@/components/vtComponents/header/Header";
-import Table from "@/components/vtComponents/table/Table";
+import Table from "@/components/table/Table";
 import { getServerSession } from "next-auth";
 import { redirect } from "next/navigation";
 
@@ -11,6 +11,7 @@ const page = async () => {
   if (!session) {
     redirect("/");
   }
+
   return (
     <Container>
       <Header />
