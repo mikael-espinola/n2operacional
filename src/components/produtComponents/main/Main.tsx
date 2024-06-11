@@ -1,5 +1,5 @@
 "use client";
-import React, { useEffect } from "react";
+import React from "react";
 import { ButtonsContainer, Header, Saudation } from "./style";
 import ReturnButton from "@/components/returnButton/ReturnButton";
 import LogoffButton from "@/components/vtComponents/header/logoffButton/LogoffButton";
@@ -13,11 +13,7 @@ const MainComponent = () => {
   if (!context) {
     return;
   }
-  const { userName, setIsUserData } = context;
-
-  useEffect(() => {
-    setIsUserData(true);
-  }, []);
+  const { userName } = context;
 
   return (
     <>

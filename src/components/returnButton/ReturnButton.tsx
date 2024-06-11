@@ -1,23 +1,21 @@
 "use client";
 import React from "react";
-import { Container, LinkButton } from "./style";
-import { useUser } from "@/context/UserProvider";
+import { Container } from "./style";
+import nookies from "nookies";
+import { ActionButton } from "../vtComponents/header/style";
 
 const ReturnButton = () => {
-  const context = useUser();
-  if (!context) {
-    return;
-  }
-
-  const { setIsUserData } = context;
   const handleReturn = () => {
-    setIsUserData(false);
+    nookies.set({}, "isUserData", "false", {
+      path: "/",
+    });
   };
+
   return (
     <Container>
-      <LinkButton onClick={handleReturn} href="/vt">
-        Return
-      </LinkButton>
+      <ActionButton onClick={handleReturn} href="/vt">
+        <span>Voltar</span>
+      </ActionButton>
     </Container>
   );
 };

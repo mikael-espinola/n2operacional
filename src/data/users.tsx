@@ -45,7 +45,7 @@ const users: User[] = [
     access: "monitor",
     vtList: [
       {
-        id: "uuidv4()",
+        id: "sanciasubcasjkcnasn-cascasocasknsdadasc-vdvwv-wdfs",
         CONTRATO: "151512151",
         gt: "22334455",
         operador: "mikael.espinola",

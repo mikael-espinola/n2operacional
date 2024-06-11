@@ -39,7 +39,7 @@ export const ActionButton = styled(Link)`
   border-radius: 5px;
   height: max-content;
   text-decoration: none;
-  padding: 0.1em;
+  padding: 0.1em 0.5em;
   cursor: pointer;
 `;
 export const ActionText = styled.span`

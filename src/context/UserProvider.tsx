@@ -1,4 +1,6 @@
 "use client";
+import { Ordem } from "@/components/table/Table";
+import ordens from "@/data/ordens";
 import users, { User } from "@/data/users";
 import { getSession } from "next-auth/react";
 import React, { createContext, useContext, useEffect, useState } from "react";
@@ -9,8 +11,8 @@ interface UserContextProps {
   id: string | undefined;
   isOpen: boolean;
   updatedUsers: any;
-  isUserData: boolean;
-  setIsUserData: (value: boolean) => void;
+  ordensList: Ordem[];
+  setOrdensList: (value: Ordem[]) => void;
   setUpdateUsers: (value: any[]) => void;
   setIsOpen: (value: boolean) => void;
   setId: (value: string | undefined) => void;
@@ -24,11 +26,10 @@ const UserProvider = ({ children }: any) => {
   const [id, setId] = useState<string | undefined>();
   const [isOpen, setIsOpen] = useState(false);
   const [userId, setUserId] = useState<number | undefined>();
-  const [updatedUsers, setUpdateUsers] = useState<User[]>();
-  const [isUserData, setIsUserData] = useState<boolean>(false);
+  const [updatedUsers, setUpdateUsers] = useState<User[]>(users);
+  const [ordensList, setOrdensList] = useState<Ordem[]>(ordens);
 
   useEffect(() => {
-    setUpdateUsers(users);
     const fetchUser = async () => {
       const session = await getSession();
       const sessionUser = session?.user?.email;
@@ -53,8 +54,8 @@ const UserProvider = ({ children }: any) => {
         userId,
         updatedUsers,
         setUpdateUsers,
-        setIsUserData,
-        isUserData,
+        setOrdensList,
+        ordensList,
       }}
     >
       {children}

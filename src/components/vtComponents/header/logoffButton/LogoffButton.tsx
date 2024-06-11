@@ -1,28 +1,20 @@
 "use client";
 
-import React, { useEffect } from "react";
+import React from "react";
 import { Button } from "./style";
 import { signOut } from "next-auth/react";
-import nookies from "nookies";
-import { useUser } from "@/context/UserProvider";
+import { destroyCookie } from "nookies";
 
 const LogoffButton = () => {
-  const context = useUser();
-
-  if (!context) {
-    return;
-  }
-
-  const { isUserData } = context;
-
   const handleLogoff = () => {
-    nookies.set(null, "isUserData", "false", {
+    destroyCookie({}, "isUserData", {
       path: "/",
     });
+
     signOut();
   };
 
-  return <Button onClick={handleLogoff}>Logoff</Button>;
+  return <Button onClick={handleLogoff}>Sair</Button>;
 };
 
 export default LogoffButton;

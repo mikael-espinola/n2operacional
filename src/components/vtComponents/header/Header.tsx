@@ -11,18 +11,13 @@ import {
 } from "./style";
 import LogoffButton from "./logoffButton/LogoffButton";
 import Filters from "@/components/filters/Filters";
-import { useUser } from "@/context/UserProvider";
+import nookies from "nookies";
 
 const Header = () => {
-  const context = useUser();
-  if (!context) {
-    return;
-  }
-
-  const { setIsUserData } = context;
-
   const handleProdutPessoal = () => {
-    setIsUserData(true);
+    nookies.set({}, "isUserData", "true", {
+      path: "/",
+    });
   };
 
   return (

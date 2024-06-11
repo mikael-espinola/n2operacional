@@ -67,7 +67,7 @@ const FormField = () => {
               />
             </Loader>
           ) : (
-            "Sign In"
+            "Entrar"
           )}
         </Button>
       </Form>

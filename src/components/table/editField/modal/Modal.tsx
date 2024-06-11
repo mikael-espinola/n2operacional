@@ -1,5 +1,5 @@
 "use client";
-import React, { ChangeEvent, useEffect, useState } from "react";
+import React, { useState } from "react";
 import {
   CloseButton,
   CloseIcon,
@@ -19,20 +19,27 @@ import {
 import { CgCloseO } from "react-icons/cg";
 import { useUser } from "@/context/UserProvider";
 import ordens from "@/data/ordens";
-import users, { User, VTItem } from "@/data/users";
+import { User } from "@/data/users";
 
 const Modal = () => {
   const [textArea, setTextArea] = useState("");
   const [status, setStatus] = useState("");
   const [isProceed, setIsProceed] = useState("");
-  const [ordemEditada, setOrdemEditada] = useState({});
 
   const context = useUser();
   if (!context) {
     throw new Error("error");
   }
-  const { userName, id, setIsOpen, userId, setUpdateUsers, updatedUsers } =
-    context;
+  const {
+    userName,
+    id,
+    setIsOpen,
+    userId,
+    setUpdateUsers,
+    updatedUsers,
+    ordensList,
+    setOrdensList,
+  } = context;
 
   const ordem = ordens.find((ordem) => ordem.id === id);
 
@@ -40,14 +47,10 @@ const Modal = () => {
     setIsOpen(false);
   };
 
-  const handleStatusOptions = (e: ChangeEvent<HTMLSelectElement>) => {
-    setStatus(e.target.value);
-  };
-  const handleTextArea = (e: ChangeEvent<HTMLTextAreaElement>) => {
-    setTextArea(e.target.value);
-  };
-  const handleIsProceed = (e: ChangeEvent<HTMLSelectElement>) => {
-    setIsProceed(e.target.value);
+  const updateOrdensList = () => {
+    const ordens = ordensList.filter((ordem) => ordem.id !== id);
+
+    setOrdensList(ordens);
   };
 
   const handleSave = () => {
@@ -67,7 +70,7 @@ const Modal = () => {
     const update = updatedUsers.map((user: User) => {
       if (user.id === userId) {
         const updatedVtList = [...user.vtList, ordemTemp];
-
+        updateOrdensList();
         return {
           ...user,
           vtList: updatedVtList,
@@ -123,7 +126,7 @@ const Modal = () => {
         </Item>
         <Item>
           <Title>STATUS</Title>
-          <Select value={status} onChange={handleStatusOptions}>
+          <Select value={status} onChange={(e) => setStatus(e.target.value)}>
             <Option value="selecione">SELECIONE</Option>
             <Option value="em_tratativa">EM TRATATIVA</Option>
             <Option value="finalizado">FINALIZADO</Option>
@@ -131,7 +134,10 @@ const Modal = () => {
         </Item>
         <Item>
           <Title>TABULAÇÃO</Title>
-          <Select value={isProceed} onChange={handleIsProceed}>
+          <Select
+            value={isProceed}
+            onChange={(e) => setIsProceed(e.target.value)}
+          >
             <option value="selecione">SELECIONE</option>
             <option value="procedente">PROCEDENTE</option>
             <option value="improcedente">IMPROCEDENTE</option>
@@ -140,7 +146,7 @@ const Modal = () => {
         <Item istext="true">
           <Title>RESOLUÇÃO BO</Title>
           <TextContainer>
-            <TextArea onChange={handleTextArea}></TextArea>
+            <TextArea onChange={(e) => setTextArea(e.target.value)}></TextArea>
           </TextContainer>
         </Item>
         <SalveButton onClick={handleSave}>Salvar</SalveButton>
