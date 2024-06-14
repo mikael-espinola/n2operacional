@@ -66,5 +66,9 @@ const UserProvider = ({ children }: any) => {
 export default UserProvider;
 
 export const useUser = () => {
-  return useContext(UserContext);
+  const context = useContext(UserContext);
+  if (!context) {
+    throw new Error("UsersProvider is not defined");
+  }
+  return context;
 };

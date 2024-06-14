@@ -5,6 +5,7 @@ import StyledJsxRegistry from "../lib/regsitry";
 import { GlobalStyle } from "./globalStyle";
 import Footer from "@/components/footer/Footer";
 import UserProvider from "@/context/UserProvider";
+import FilterProvider from "@/context/filterProvider";
 
 const poppins = Poppins({ subsets: ["latin"], weight: "400" });
 
@@ -21,11 +22,13 @@ export default function RootLayout({
     <html lang="pt-br">
       <body className={poppins.className}>
         <StyledJsxRegistry>
-          <UserProvider>
-            {children}
-            <Footer />
-            <GlobalStyle />
-          </UserProvider>
+          <FilterProvider>
+            <UserProvider>
+              {children}
+              <Footer />
+              <GlobalStyle />
+            </UserProvider>
+          </FilterProvider>
         </StyledJsxRegistry>
       </body>
     </html>
