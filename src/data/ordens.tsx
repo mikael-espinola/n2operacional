@@ -1,5 +1,34 @@
 import { v4 as uuidv4 } from "uuid";
 
+export type Ordem = {
+  id: string;
+  gt: string;
+  operador: string;
+  status: string;
+  H_RETORNO: string;
+  DATA_ABERTURA: string;
+  EMPRESA: string;
+  CIDADE: string;
+  TME: string;
+  ASSUNTO: string;
+  SERVICO: string;
+  BAIRRO: string;
+  CAMINHO: string;
+  TEC: string;
+  HISTÓRICO: string;
+  RESOLUCAO_N2: string;
+  RUA: string;
+  UF: string;
+  RE: string;
+  H_FINALIZADA: string;
+  FINALIZACAO: string;
+  EDITOR_1: string;
+  OP: string;
+  RUIE: string;
+  ORDEM: string;
+  CONTRATO: string;
+};
+
 const ordens = [
   {
     id: uuidv4(),

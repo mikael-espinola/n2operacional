@@ -6,44 +6,13 @@ import EditField from "./editField/EditField";
 import { useUser } from "@/context/UserProvider";
 import { User } from "@/data/users";
 import nookies from "nookies";
-
-export type Ordem = {
-  id: string;
-  gt: string;
-  operador: string;
-  status: string;
-  H_RETORNO: string;
-  DATA_ABERTURA: string;
-  EMPRESA: string;
-  CIDADE: string;
-  TME: string;
-  ASSUNTO: string;
-  SERVICO: string;
-  BAIRRO: string;
-  CAMINHO: string;
-  TEC: string;
-  HISTÓRICO: string;
-  RESOLUCAO_N2: string;
-  RUA: string;
-  UF: string;
-  RE: string;
-  H_FINALIZADA: string;
-  FINALIZACAO: string;
-  EDITOR_1: string;
-  OP: string;
-  RUIE: string;
-  ORDEM: string;
-  CONTRATO: string;
-};
+import { useFilters } from "@/context/filterProvider";
+import { Ordem } from "@/data/ordens";
 
 const Table = () => {
   const [linhas, setLinhas] = useState<any[]>([]);
   const [currentUSer, setCurrentUSer] = useState<any[]>();
-  const context = useUser();
 
-  if (!context) {
-    return;
-  }
   const {
     setId,
     isOpen,
@@ -52,7 +21,9 @@ const Table = () => {
     updatedUsers,
     setOrdensList,
     ordensList,
-  } = context;
+  } = useUser();
+
+  const { filters, currentFilter } = useFilters();
 
   const verifyCookies = () => {
     const cookies = nookies.get(null);
@@ -63,6 +34,21 @@ const Table = () => {
 
   useEffect(() => {
     const isUserDataCookie = verifyCookies();
+    let ordensMapped: Ordem[] = [];
+
+    if (currentFilter !== "") {
+      console.log("entrou no 1o if");
+      console.log(currentFilter);
+      ordensList.map((ordem) => {
+        if (ordem.EMPRESA === currentFilter) {
+          console.log("entrou no 2o if");
+          ordensMapped.push(ordem);
+        }
+      });
+      console.log(ordensMapped);
+      setOrdensList(ordensMapped);
+      return;
+    }
 
     if (isUserDataCookie) {
       const data: User = updatedUsers?.find(
@@ -73,7 +59,7 @@ const Table = () => {
     } else {
       setOrdensList(ordensList);
     }
-  }, [updatedUsers, userName]);
+  }, [updatedUsers, userName, filters]);
 
   const handleClick = (value: string) => {
     setId(value);

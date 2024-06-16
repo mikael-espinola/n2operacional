@@ -1,6 +1,5 @@
 "use client";
-import { Ordem } from "@/components/table/Table";
-import ordens from "@/data/ordens";
+import ordens, { Ordem } from "@/data/ordens";
 import users, { User } from "@/data/users";
 import { getSession } from "next-auth/react";
 import React, { createContext, useContext, useEffect, useState } from "react";

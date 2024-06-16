@@ -1,31 +1,4 @@
-export interface VTItem {
-  id: string;
-  CONTRATO: string;
-  gt: string;
-  operador: string;
-  status: string;
-  H_RETORNO: string;
-  DATA_ABERTURA: string;
-  EMPRESA: string;
-  CIDADE: string;
-  TME: string;
-  ASSUNTO: string;
-  SERVICO: string;
-  BAIRRO: string;
-  CAMINHO: string;
-  TEC: string;
-  HISTÓRICO: string;
-  RESOLUCAO_N2: string;
-  RUA: string;
-  UF: string;
-  RE: string;
-  H_FINALIZADA: string;
-  FINALIZACAO: string;
-  EDITOR_1: string;
-  OP: string;
-  RUIE: string;
-  ORDEM: string;
-}
+import { Ordem } from "./ordens";
 
 export interface User {
   id: number;
@@ -33,7 +6,7 @@ export interface User {
   name: string;
   password: string;
   access: string;
-  vtList: VTItem[];
+  vtList: Ordem[];
 }
 
 const users: User[] = [

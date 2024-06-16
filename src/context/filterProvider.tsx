@@ -20,19 +20,23 @@ const FilterTemplate: FiltersProp = {
   bairro: "",
   uf: "",
 };
-
 interface FilterProviderProp {
   filters: FiltersProp;
   setFilter: (value: FiltersProp) => void;
+  currentFilter: string;
+  setCurrentFilter: (value: string) => void;
 }
 
 const filterContext = createContext<FilterProviderProp | undefined>(undefined);
 
 const FilterProvider = ({ children }: any) => {
   const [filters, setFilter] = useState(FilterTemplate);
+  const [currentFilter, setCurrentFilter] = useState<string>("");
 
   return (
-    <filterContext.Provider value={{ filters, setFilter }}>
+    <filterContext.Provider
+      value={{ filters, setFilter, setCurrentFilter, currentFilter }}
+    >
       {children}
     </filterContext.Provider>
   );
